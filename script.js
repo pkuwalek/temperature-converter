@@ -5,9 +5,8 @@ var converted = 0;
 
 convertButton.addEventListener("click", function(){
     converted = inputC.valueAsNumber * 1.8 + 32;
-    console.log(typeof(converted))
-    if(Number.isInteger(converted)){
-        tempF.textContent = converted;
-    } else
-    tempF.textContent = converted.toFixed(2);
+    if(!Number.isInteger(converted)){
+        converted = converted.toFixed(2);
+    }
+    tempF.textContent = converted;
 });

@@ -9,8 +9,8 @@ var celToFar = document.getElementById("celToFar");
 var converted = 0;
 
 convertButton.addEventListener("click", convert);
+switchButton.addEventListener("click", toggle);
 
-// Enter key listener
 window.addEventListener("keyup", function(e){
     if (e.keyCode === 13) {
         convert();
@@ -20,17 +20,18 @@ window.addEventListener("keyup", function(e){
 function convert(){
     if(farToCel.className === "hide"){
         converted = inputC.valueAsNumber * 1.8 + 32;
-        if(!Number.isInteger(converted)){
-            converted = converted.toFixed(2);
-        }
-        tempF.textContent = converted;
+        tempF.textContent = formatNumber(converted);
     } else {
-        converted = (inputF.valueAsNumber - 32) * .5556;
-        if(!Number.isInteger(converted)){
-            converted = converted.toFixed(2);
-        }
-        tempC.textContent = converted;
+        converted = (inputF.valueAsNumber - 32) / 1.8;
+        tempC.textContent = formatNumber(converted);
     }
+}
+
+function formatNumber(num){
+    if(!Number.isInteger(num)){
+        num = num.toFixed(2);
+    }
+    return num;
 }
 
 function toggle() {

@@ -36,8 +36,12 @@ input {
     margin: 15px;
     padding: 5px 10px;
     transition: .5s;
+    outline: none;
 }
 .btn:hover{
     color: white;
     background: #2EC4BD;
+}
+.hide {
+    display: none;
 }
